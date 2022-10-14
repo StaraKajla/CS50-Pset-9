@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Sell
+{% endblock %}
+
+{% block main %}
+    <form action="/sell" method="post">
+
+        <div class="mb-3">
+            <select class="form-select mx-auto w-auto" name="symbol">
+                <option disabled selected>Select</option>
+                {% for purchase in userPurchases %}
+                {% if purchase['sum(amount)'] > 0 %}
+                <option>{{ purchase['stock_symbol'] }}</option>
+                {% endif %}
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" name="shares" placeholder="Share amount" type="number" min="0">
+        </div>
+
+        <button class="btn btn-primary mb-3" type="submit">Sell</button>
+        <div class="alert alert-danger" role="alert">
+            <p class="h6">Make sure you select the correct amount before selling. You will not be prompted for confirmation!</p>
+        </div>
+
+    </form>
+
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Buy
+{% endblock %}
+
+{% block main %}
+    <form class="mb-3" action="/buy" method="post">
+        <div class="mb-3">
+            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" name="symbol" placeholder="Symbol" type="text">
+        </div>
+        <div class="mb-3">
+            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" name="shares" placeholder="Share amount" type="number" min="0">
+        </div>
+        <button class="btn btn-primary" type="submit">Buy</button>
+    </form>
+    <div class="alert alert-danger" role="alert">
+        <p class="h6">Make sure you select the correct amount to purchase. You will not be prompted for confirmation!</p>
+    </div>
+
+{% endblock %}
